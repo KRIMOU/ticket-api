@@ -18,7 +18,9 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
-    //when we fetch , it fetch just when we asking , we need to add transactionnal to go further and get Data persistence context like session to execute all the transactions
+    //when we fetch , it fetch just when we asking ,
+    // we need to add transactionnal to go further and get
+    // Data persistence context like session to execute all the transactions
     @OneToOne(fetch=FetchType.EAGER)
     private Passport passport;
 

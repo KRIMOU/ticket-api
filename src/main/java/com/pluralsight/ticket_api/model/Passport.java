@@ -17,7 +17,9 @@ public class Passport {
     @Column(nullable = false)
     private String name;
 
-    //we gonna have only column passport_id inside student table , the owner of relationship is student
+    //we gonna have only column passport_id inside student table ,
+    // the owner of relationship is student but the relationship
+    // stay biderectionnel like we can get student from passport or the opposite
     @OneToOne(fetch=FetchType.EAGER , mappedBy = "passport")
     private Student student;
 
