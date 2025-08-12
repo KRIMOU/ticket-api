@@ -1,9 +1,6 @@
 package com.pluralsight.ticket_api.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +16,9 @@ public class Passport {
 
     @Column(nullable = false)
     private String name;
+
+    //we gonna have only column passport_id inside student table , the owner of relationship is student
+    @OneToOne(fetch=FetchType.EAGER , mappedBy = "passport")
+    private Student student;
 
 }
