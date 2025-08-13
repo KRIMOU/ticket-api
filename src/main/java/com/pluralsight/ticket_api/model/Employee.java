@@ -7,7 +7,10 @@ import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 //@Entity
-//@Inheritance(strategy=InheritanceType.JOINED)
+//@Inheritance(strategy=InheritanceType.JOINED)// One table :one table for both herited tables
+//Table_per class : table for all classes herited
+// Joined :  joined with sub tables
+// mappedsuperclass cannot be an entity , mapped is applied to subTables
 public abstract class Employee {
 
     @Id

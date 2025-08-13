@@ -1,0 +1,40 @@
+package com.pluralsight.ticket_api.repository;
+
+import com.pluralsight.ticket_api.model.Course;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.test.context.jdbc.Sql;
+
+import java.util.List;
+import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+@DataJpaTest
+public class CourseRepositoryTest {
+    @Autowired
+    CourseRepository courseRepository;
+
+
+    @Test
+    @Sql({"/filterTestData.sql"})
+    void givenStatus_whenGettingTickets_thenTicketsWithMatchingStatusAreReturned(){
+        Optional<Course> course = courseRepository.findById(1l);
+        assertFalse(course.isPresent());
+    }
+
+    @Test
+    void sort(){
+        Sort sort = Sort.by(Sort.Direction.ASC, "name");
+        courseRepository.findAll(sort);
+    }
+
+    @Test
+    void pagination(){
+        PageRequest pagination = PageRequest.of(0,4);
+        courseRepository.findAll(pagination);
+    }
+
+}
