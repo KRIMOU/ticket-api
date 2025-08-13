@@ -8,7 +8,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.jdbc.Sql;
 
-import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -21,7 +20,7 @@ public class CourseRepositoryTest {
     @Test
     @Sql({"/filterTestData.sql"})
     void givenStatus_whenGettingTickets_thenTicketsWithMatchingStatusAreReturned(){
-        Optional<Course> course = courseRepository.findById(1l);
+        Optional<Course> course = courseRepository.findById(1L);
         assertFalse(course.isPresent());
     }
 
