@@ -5,6 +5,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -22,6 +24,12 @@ public class Course {
     private LocalDateTime createdDate;
 
     private boolean isDeleted;
+
+    @OneToMany(mappedBy = "course")
+    private List<Review> previewList = new ArrayList<>();
+
+    @ManyToMany(mappedBy="courses")
+    private List<Student> students = new ArrayList<>();
 
 
 }
