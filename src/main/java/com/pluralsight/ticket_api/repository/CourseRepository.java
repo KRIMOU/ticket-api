@@ -3,11 +3,12 @@ package com.pluralsight.ticket_api.repository;
 import com.pluralsight.ticket_api.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@RepositoryRestResource(path="courses")
 public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> findByNameAndId(String name, Long id);
 
