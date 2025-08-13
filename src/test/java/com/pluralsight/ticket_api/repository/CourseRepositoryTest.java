@@ -9,10 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.jdbc.Sql;
-
 import java.util.Optional;
-
-import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @DataJpaTest
