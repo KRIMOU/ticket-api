@@ -4,12 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
+import jakarta.persistence.Cacheable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Cacheable
 @NamedQueries(value = {
         @NamedQuery(name = "query_get_all_courses",
                 query = "Select  c  From Course c"),
