@@ -23,6 +23,7 @@ public class CourseRepositoryTest {
     void givenStatus_whenGettingTickets_thenTicketsWithMatchingStatusAreReturned(){
         Optional<Course> course = courseRepository.findById(1L);
         assertFalse(course.isPresent());
+        //if i do the same call then the first cash layer comes to play and it will retreive same data if i put @transactional
     }
 
     @Test
