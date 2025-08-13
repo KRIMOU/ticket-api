@@ -4,11 +4,15 @@ import com.pluralsight.ticket_api.model.Course;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.Optional;
+
+import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @DataJpaTest
@@ -33,7 +37,8 @@ public class CourseRepositoryTest {
     @Test
     void pagination(){
         PageRequest pagination = PageRequest.of(0,4);
-        courseRepository.findAll(pagination);
+        Page<Course> firstPage = courseRepository.findAll(pagination);
+        Pageable secondPage = firstPage.nextPageable();
     }
 
 }
