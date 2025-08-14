@@ -13,7 +13,7 @@ public class Review {
     @Id
     @GeneratedValue
     private Long id;
-
+    //if we dont specify the type it use the order in enum
     @Enumerated(EnumType.STRING)
     private ReviewRating rating;
 
