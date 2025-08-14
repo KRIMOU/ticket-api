@@ -18,6 +18,9 @@ import java.util.List;
                 query = "Select  c  From Course c JOIN FETCH c.students s"),
         @NamedQuery(name = "query_get_100_Step_courses",
                 query = "Select  c  From Course c where name like '%100 Steps'") })
+@SQLDelete(sql="update course set is_deleted=true where id=?")
+// @Where(clause="is_deleted = false") // Deprecated
+@SQLRestriction("status <> 'DELETED'") //tells to fetch only when status not deleted
 public class Course {
     @Id
     @GeneratedValue
@@ -40,6 +43,15 @@ public class Course {
 
     @ManyToMany(mappedBy="courses")
     private List<Student> students = new ArrayList<>();
+
+    private boolean isDeleted;
+
+    //before delete
+    @PreRemove
+    private void preRemove(){
+        LOGGER.info("Setting isDeleted to True");
+        this.isDeleted = true;
+    }
 
 
 }
